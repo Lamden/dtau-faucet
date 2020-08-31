@@ -25,7 +25,18 @@ module.exports = {
 							hotReload: false // pending https://github.com/sveltejs/svelte/issues/2377
 						}
 					}
-				}
+				},
+				{
+					test: /\.svg$/,
+					loader: 'svg-inline-loader',
+					options: {
+					  removeSVGTagAttrs: true
+					}
+				  },
+				{
+					test: /\.ttf$/,
+					use: ['file-loader'],
+				},
 			]
 		},
 		mode,
@@ -58,7 +69,18 @@ module.exports = {
 							dev
 						}
 					}
-				}
+				},
+				{
+					test: /\.svg$/,
+					loader: 'svg-inline-loader',
+					options: {
+					  removeSVGTagAttrs: true
+					}
+				  },
+				{
+					test: /\.ttf$/,
+					use: ['file-loader'],
+				},
 			]
 		},
 		mode: process.env.NODE_ENV,

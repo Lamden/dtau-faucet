@@ -11,9 +11,6 @@ const networkInfo = {
 
 // For more info, check https://www.netlify.com/docs/functions/#javascript-lambda-functions
 export async function handler(event, context, callback) {
-  console.log("queryStringParameters", event.queryStringParameters)
-  console.log({ SK, VK })
-
   const { account } = event.queryStringParameters
   const txInfo = {
     uid: '',
@@ -27,17 +24,20 @@ export async function handler(event, context, callback) {
   }
 
   const txBuilder = new Lamden.TransactionBuilder(networkInfo, txInfo)
+  let res;
   try{
-    var sendRes = await txBuilder.send(SK).catch(err => console.log(err))
-    console.log(sendRes)
-    var checkRes = await txBuilder.checkForTransactionResult().catch(err => console.log(err))
-    console.log(checkRes)
+    res = await txBuilder.send(SK).catch(err => res.errors = [err])
+    console.log(res)
+    if (res.errors.length === 0){
+      res = await txBuilder.checkForTransactionResult().catch(err => res.errors = [err])
+      console.log(res)
+    }
   } catch (e){}
 
 
   callback(null, {
     // return null to show no errors
     statusCode: 200, // http status code
-    body: JSON.stringify(checkRes),
+    body: JSON.stringify(res),
   })
 }

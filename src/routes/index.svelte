@@ -1,43 +1,26 @@
 <script>
+	import FaucetMain from '../components/FaucetMain.svelte'
+	import TxResult from '../components/TxResult.svelte'
 
 	let account = "";
-	let message, errors, txHash;
+	let res;
 
-	const give = () => {
-		fetch(`/.netlify/functions/send?account=${account}`)
-		.then(response => response.json())
-		.then(res => {
-			if (res.status !== 0) errors = res.errors;
-			else {
-				message = "dTAU Sent!  Check your wallet."
-			}
-			txHash = res.hash
-			console.log(res)
-		})
+	const handleResponse = (e) => {
+		res = e.detail;
+		account = res.account;
+	}
+
+	const handleReset = () => {
+		account = ""
+		res = undefined;
 	}
 </script>
 
-<style>
-.error{
-	color:red;
-}
-</style>
-
-<svelte:head>
-	<title>Lamden Testnet Faucet</title>
-</svelte:head>
-
-<h1>GET DTAU</h1>
-
-<form id="give" on:submit|preventDefault={give}>
-	<label for="account">Lamden Address</label>
-	<input id="account" type="text" bind:value={account} />
-	<input type="submit" value={'Get dTAU'} form="give" />
-</form>
-
-
-
-{#if txHash}
-	<p class:error={errors}>{message || errors}</p>
-	<a href="{`https://testnet.lamden.io/transactions/${txHash}`}" >{txHash}</a>
+{#if !res}
+	<FaucetMain on:response={handleResponse} />
 {/if}
+
+{#if res}
+	<TxResult {res} on:reset={handleReset}/>
+{/if}
+
