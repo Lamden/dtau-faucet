@@ -50,6 +50,11 @@ span{
 .no-hash{
     margin: 0;
 }
+.overflow{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 </style>
 
@@ -62,11 +67,16 @@ span{
     <p class="error">{faucetError}</p>
 {/if}
 <p>Address:</p>
-<a href="{`https://testnet.lamden.io/addresses/${res.account}`}" target="_blank" rel="noreferrer noopener">{res.account}</a>
+<div class="overflow">
+    <a href="{`https://testnet.lamden.io/addresses/${res.account}`}" target="_blank" rel="noreferrer noopener">{res.account}</a>
+</div>
+
 
 <p>Transactoin Details:</p>
 {#if res.hash}
-    <a href="{`https://testnet.lamden.io/transactions/${res.hash}`}" target="_blank" rel="noreferrer noopener">{res.hash}</a>
+    <div class="overflow">
+        <a href="{`https://testnet.lamden.io/transactions/${res.hash}`}" target="_blank" rel="noreferrer noopener">{res.hash}</a>
+    </div>
 {:else}
     <p class="no-hash">No Hash</p>
 {/if}

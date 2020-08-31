@@ -11,6 +11,7 @@
 		margin: 0 auto;
 		box-sizing: border-box;
 		flex-grow: 1;
+		width: 100%;
 	}
 </style>
 
