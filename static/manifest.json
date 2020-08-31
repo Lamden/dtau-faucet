@@ -3,6 +3,7 @@
 	"theme_color": "#461BC2",
 	"name": "Lamden dTAU Faucet",
 	"short_name": "Lamden dTAU Faucet",
+	"prefer_related_applications": false,
 	"display": "minimal-ui",
 	"start_url": "/",
 	"icons": [
