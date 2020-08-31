@@ -20,6 +20,7 @@
     "compression": "^1.7.1",
     "cross-env": "^5.2.0",
     "dotenv": "^8.2.0",
+    "encoding": "^0.1.13",
     "lamden-js": "^1.11.0",
     "netlify-lambda": "^1.4.13",
     "node-fetch": "^2.6.0",
