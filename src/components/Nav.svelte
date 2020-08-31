@@ -30,7 +30,7 @@
 		margin-left: 15px;
 	}
 
-	@media (min-width: 450px) {
+	@media (min-width: 500px) {
 		div{
 			justify-content: flex-start;
 		}
