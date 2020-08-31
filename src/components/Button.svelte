@@ -28,7 +28,9 @@ button, input{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    font-size: 10px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
     margin: 2px;
     padding: 3px;
     cursor: pointer;

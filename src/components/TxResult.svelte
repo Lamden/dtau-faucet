@@ -71,4 +71,4 @@ span{
     <p class="no-hash">No Hash</p>
 {/if}
 
-<Button name="Home" width="232px" color="purple" margin="2rem 0 0" click={() => dispatch('reset')} />
+<Button name="HOME" width="232px" color="purple" margin="2rem 0 0" click={() => dispatch('reset')} />
