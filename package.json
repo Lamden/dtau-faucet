@@ -1,7 +1,7 @@
 {
-  "name": "sapper-netlify-jamstack-starter",
-  "description": "A starter for sapper with netlify",
-  "version": "0.0.1",
+  "name": "lamden-dtau-faucet",
+  "description": "A faucet to get Lamden Testnet tokens (dTAU).",
+  "version": "1.0.0",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev npm-run-all --parallel dev:app dev:server",
     "dev:app": "sapper dev",
