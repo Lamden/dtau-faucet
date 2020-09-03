@@ -32,6 +32,7 @@
             fetch(`/.netlify/functions/send?account=${account}`)
                 .then(response => response.json())
                 .then(res => {
+                    console.log(res)
                     res.account = account
                     dispatch('response', res)
                 })

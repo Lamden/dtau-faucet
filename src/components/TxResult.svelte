@@ -12,7 +12,7 @@
 
     let assertionError = /AssertionError\(\'(.+)\'/
 
-    $: hasErrors = res.errors.length > 0
+    $: hasErrors = res.errors ? res.errors.length > 0 ? true : false : false
     $: faucetError = hasErrors ? parseErrors(res.errors) : false;
 
     let successMessage = "dTAU Sent!  Check your wallet."
@@ -54,6 +54,10 @@ span{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+h1{
+    margin: 0 0 2rem 0;
+    font-size: 47px;
 }
 
 </style>
