@@ -20,7 +20,7 @@ export async function handler(event, context, callback) {
     kwargs:{
         'account': account
     },
-    stampLimit: 50000
+    stampLimit: 100
   }
 
   const txBuilder = new Lamden.TransactionBuilder(networkInfo, txInfo)
