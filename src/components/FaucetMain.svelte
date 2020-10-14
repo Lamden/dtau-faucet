@@ -6,6 +6,7 @@
     
     let inputElm;
     let account = "";
+    let sending = false;
     
     const dispatch = createEventDispatcher();
 
@@ -29,12 +30,14 @@
 
     const give = () => {
         if (isLamdenKey(account)){
+            sending = true
             fetch(`/.netlify/functions/send?account=${account}`)
                 .then(response => response.json())
                 .then(res => {
                     console.log(res)
                     res.account = account
                     dispatch('response', res)
+                    sending = false
                 })
         }else{
             setValidity()
@@ -86,5 +89,5 @@
         on:changed={refreshValidity}
         label="Enter Your Lamden Wallet Address" 
         margin="3rem 0 0"/>
-	<Button width="232px" margin="1rem 0" color="purple" submit={true} name="GET DTAU" formId="give" />
+	<Button width="232px" margin="1rem 0" color="purple" submit={true} name="GET DTAU" formId="give" disabled={sending}/>
 </form>

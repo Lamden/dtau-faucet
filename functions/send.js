@@ -15,12 +15,12 @@ export async function handler(event, context, callback) {
   const txInfo = {
     uid: '',
     senderVk: VK,
-    contractName: 'con_dtau_faucet',
+    contractName: 'con_dtau_faucet_2',
     methodName: 'give',
     kwargs:{
         'account': account
     },
-    stampLimit: 100
+    stampLimit: 65
   }
 
   const txBuilder = new Lamden.TransactionBuilder(networkInfo, txInfo)
@@ -28,8 +28,11 @@ export async function handler(event, context, callback) {
   try{
     res = await txBuilder.send(SK).catch(err => res.errors = [err])
     console.log(res)
-    if (res.errors.length === 0){
+    if (!res.errors){
       res = await txBuilder.checkForTransactionResult().catch(err => res.errors = [err])
+      if (res.result !== "None"){
+        res.errors = [res.result]
+      }
       console.log(res)
     }
   } catch (e){}

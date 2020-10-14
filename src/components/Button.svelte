@@ -36,7 +36,6 @@ button, input{
     cursor: pointer;
 }
 
-
 button.solid, input.solid{
     display: flex;
     align-items: center;
