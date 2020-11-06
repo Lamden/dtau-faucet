@@ -15,7 +15,7 @@ export async function handler(event, context, callback) {
   const txInfo = {
     uid: '',
     senderVk: VK,
-    contractName: 'con_dtau_faucet_2',
+    contractName: 'con_faucet',
     methodName: 'give',
     kwargs:{
         'account': account
