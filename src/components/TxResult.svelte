@@ -76,7 +76,7 @@ h1{
 </div>
 
 
-<p>Transactoin Details:</p>
+<p>Transaction Details:</p>
 {#if res.hash}
     <div class="overflow">
         <a href="{`https://testnet.lamden.io/transactions/${res.hash}`}" target="_blank" rel="noreferrer noopener">{res.hash}</a>
